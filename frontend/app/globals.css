@@ -1,26 +1,192 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-deep: #1a0f0a;
+  --bg-mid: #231308;
+  --bg-card: #f5f0e8;
+  --bg-card-dark: #2a1a0e;
+  --gold-light: #f0d080;
+  --gold: #c9a84c;
+  --gold-dark: #8b6914;
+  --gold-gradient: linear-gradient(135deg, #f0d080 0%, #c9a84c 40%, #a07828 100%);
+  --text-dark: #2a1a0e;
+  --text-mid: #5a3e28;
+  --text-light: #f5f0e8;
+  --text-muted: #b89a72;
+  --border-gold: rgba(201, 168, 76, 0.4);
+  --shadow-gold: 0 0 40px rgba(201, 168, 76, 0.15);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-deep);
+  color: var(--text-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Page background with gold glow */
+.valam-bg {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(201, 168, 76, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(139, 80, 20, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 60% at 10% 60%, rgba(80, 30, 10, 0.2) 0%, transparent 50%),
+    linear-gradient(160deg, #1a0f0a 0%, #231308 50%, #1a0d06 100%);
+  position: relative;
+}
+
+/* Gold card */
+.valam-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--gold);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-gold), 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Dark card */
+.valam-card-dark {
+  background: var(--bg-card-dark);
+  border: 1.5px solid var(--border-gold);
+  border-radius: 20px;
+  box-shadow: var(--shadow-gold), 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Logo */
+.valam-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.valam-logo-star {
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+/* Gold button */
+.btn-gold {
+  background: var(--gold-gradient);
+  color: var(--text-dark);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 56px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.03em;
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.5);
+  filter: brightness(1.05);
+}
+
+/* Input fields */
+.valam-input {
+  width: 100%;
+  background: #2a1a0e;
+  border: 1.5px solid rgba(201, 168, 76, 0.3);
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: var(--text-light);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.valam-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+}
+
+/* Select dropdown */
+.valam-select {
+  width: 100%;
+  background: #2a1a0e;
+  border: 1.5px solid rgba(201, 168, 76, 0.3);
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: var(--text-light);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+}
+
+.valam-select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+}
+
+/* Progress dots */
+.step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, 0.25);
+  transition: all 0.3s ease;
+}
+
+.step-dot.active {
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.6);
+  width: 28px;
+  border-radius: 5px;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.fade-up-delay-1 {
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+
+.fade-up-delay-2 {
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+
+.fade-up-delay-3 {
+  animation: fadeUp 0.6s ease 0.3s both;
+}
+
+.gold-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold-gradient);
+  border-radius: 2px;
+  margin: 0 auto;
 }
