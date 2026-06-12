@@ -3,12 +3,12 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 const goals = [
-    { value: 'foundation', icon: '🌱', title: 'Build My Foundation', desc: 'Emergency fund, insurance, basics' },
-    { value: 'grow_wealth', icon: '📈', title: 'Grow My Wealth', desc: 'Increase portfolio value' },
-    { value: 'first_crore', icon: '🎯', title: 'Reach First ₹1 Crore', desc: 'Milestone wealth building' },
-    { value: 'financial_freedom', icon: '🔓', title: 'Achieve Financial Freedom', desc: 'Passive income > expenses' },
-    { value: 'retire_comfortably', icon: '🏖️', title: 'Retire Comfortably', desc: 'Peaceful retirement planning' },
-    { value: 'manage_better', icon: '📊', title: 'Manage Investments Better', desc: 'Optimize existing portfolio' },
+    { id: 1, value: 'emergency',  icon: '🌱', title: 'Build My Foundation',      desc: 'Emergency fund, insurance, basics' },
+    { id: 2, value: 'wealth',     icon: '📈', title: 'Grow My Wealth',            desc: 'Increase portfolio value' },
+    { id: 3, value: 'wealth',     icon: '🎯', title: 'Reach First ₹1 Crore',     desc: 'Milestone wealth building' },
+    { id: 4, value: 'retirement', icon: '🔓', title: 'Achieve Financial Freedom', desc: 'Passive income > expenses' },
+    { id: 5, value: 'retirement', icon: '🏖️', title: 'Retire Comfortably',        desc: 'Peaceful retirement planning' },
+    { id: 6, value: 'wealth',     icon: '📊', title: 'Manage Investments Better', desc: 'Optimize existing portfolio' },
 ]
 
 export default function Step4Page() {
@@ -47,7 +47,7 @@ export default function Step4Page() {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '32px' }}>
                     {goals.map((goal) => (
                         <div
-                            key={goal.value}
+                            key={goal.id}
                             onClick={() => setSelectedGoal(goal.value)}
                             className="valam-card"
                             style={{

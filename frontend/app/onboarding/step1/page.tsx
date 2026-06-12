@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
@@ -7,6 +7,15 @@ export default function Step1Page() {
     const router = useRouter()
     const [name, setName] = useState('')
     const [age, setAge] = useState('')
+
+    useEffect(() => {
+        const keysToRemove = [
+            'valam_name', 'valam_age', 'valam_income', 'valam_savings',
+            'valam_investments', 'valam_knowledge', 'valam_goal', 'valam_result'
+        ]
+        keysToRemove.forEach(key => sessionStorage.removeItem(key))
+        localStorage.removeItem('valam_profile_id')
+    }, [])
 
     const handleContinue = () => {
         if (!name || !age || parseInt(age) < 18) {

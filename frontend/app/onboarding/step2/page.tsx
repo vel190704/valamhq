@@ -3,10 +3,10 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 const experiences = [
-    { value: 'Beginner - No Investments', label: 'Beginner', desc: 'No Investments' },
-    { value: 'Learning - FDs, Mutual Funds', label: 'Learning', desc: 'FDs, Mutual Funds' },
-    { value: 'Intermediate - Stocks, ETFs, Bonds', label: 'Intermediate', desc: 'Stocks, ETFs, Bonds' },
-    { value: 'Advanced - Crypto, Options, Global Markets', label: 'Advanced', desc: 'Crypto, Options, Global Markets' },
+    { value: 'beginner',     label: 'Beginner',     desc: 'No Investments' },
+    { value: 'learning',     label: 'Learning',     desc: 'FDs, Mutual Funds' },
+    { value: 'intermediate', label: 'Intermediate', desc: 'Stocks, ETFs, Bonds' },
+    { value: 'advanced',     label: 'Advanced',     desc: 'Crypto, Options, Global Markets' },
 ]
 
 export default function Step2Page() {
